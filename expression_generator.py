@@ -1,7 +1,7 @@
 class ExpressionGenerator:
-    def __init__(self, target):
+    def __init__(self, digits, target):
         self.target = target
-        self.digits = '9876543210'
+        self.digits = digits
         self.results = []
 
     def backtrack(self, expr, pos, total):
@@ -37,3 +37,17 @@ class ExpressionGenerator:
         """Выводит сгенерированные выражения."""
         for result in self.results:
             print(result)
+
+
+N = int(input("Введите значение N: "))
+M = int(input("Введите значение M: "))
+
+numbers = ''.join(str(i) for i in range(1, N+1))
+print("STR", numbers)
+expression_generator = ExpressionGenerator(numbers, M)
+
+# Генерируем выражения
+expression_generator.generate_expressions()
+
+# Выводим результаты
+expression_generator.print_results()
