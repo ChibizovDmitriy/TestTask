@@ -7,7 +7,7 @@ def find_monotonic_subarray_bounds(arr):
     max_length = 1
     current_length = 1
     increasing = arr[1] > arr[0]
-    all_same = True
+    all_same = True  # Флаг, показывающий, если все элементы массива одинаковы
 
     for i in range(1, len(arr)):
         if arr[i] != arr[i - 1]:
@@ -22,13 +22,13 @@ def find_monotonic_subarray_bounds(arr):
             current_length = 2 if arr[i] == arr[i - 1] else 1
             increasing = arr[i] > arr[i - 1]
 
-    # Check if the last subarray is the longest
+    # Проверяем, если последний подотрезок является самым длинным
     if current_length > max_length:
         max_length = current_length
         end = len(arr) - 1
         start = end - max_length + 1
 
-    # Special case: if all elements are the same
+    # Особый случай: если все элементы массива одинаковы
     if all_same:
         start, end = 0, 0
 
